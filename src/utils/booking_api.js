@@ -5,7 +5,8 @@
 
 //api base url
 
-const API_BASE = 'http://localhost:5005';
+// const API_BASE = 'http://localhost:5005';
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5005';
 
 
 
