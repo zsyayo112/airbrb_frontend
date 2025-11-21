@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import {
   Container,
+  Grid,
   Typography,
   CircularProgress,
   Box,
@@ -16,7 +17,6 @@ import {
   AccordionDetails,
   Chip,
 } from '@mui/material';
-import Grid from '@mui/material/Grid2';
 import {
   Search as SearchIcon,
   FilterList as FilterIcon,
