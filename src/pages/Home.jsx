@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import {
   Container,
-  Grid,
   Typography,
   CircularProgress,
   Box,
@@ -17,6 +16,7 @@ import {
   AccordionDetails,
   Chip,
 } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import {
   Search as SearchIcon,
   FilterList as FilterIcon,
@@ -432,7 +432,7 @@ function Home() {
         ) : (
           <Grid container spacing={3}>
             {filteredListings.map((listing) => (
-              <Grid item xs={12} sm={6} md={4} key={listing.id}>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={listing.id}>
                 <ListingCard listing={listing} />
               </Grid>
             ))}
