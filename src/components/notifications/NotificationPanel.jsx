@@ -41,6 +41,11 @@ function NotificationPanel() {
   }, [token, email]);
 
   const checkForNotifications = async () => {
+    // Don't check if user is not logged in
+    if (!token || !email) {
+      return;
+    }
+
     try {
       const [bookingsData, listingsData] = await Promise.all([
         getAllBookings(token),
@@ -127,7 +132,15 @@ function NotificationPanel() {
       // Update last checked bookings
       setLastCheckedBookings(bookingsData.bookings);
     } catch (err) {
-      console.error('Failed to check notifications:', err);
+      // Silently fail if token is invalid (user logged out)
+      if (err.message === 'Invalid Token') {
+        // Clear interval by returning early on next check
+        return;
+      }
+      // Only log other errors in development
+      if (import.meta.env.DEV) {
+        console.error('Failed to check notifications:', err);
+      }
     }
   };
 
